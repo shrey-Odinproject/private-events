@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   # get "/users/:id", to: "users#show"
   # get "/events", to: "events#index"
 
-  resources :events, only: [:index, :new, :create, :show]
-  resources :users, only: [:show]
-
   devise_for :users, :controllers => {registrations: 'registrations'}
+  resources :users, only: [:show] # resources user should be below devise user to work
   
+  resources :events, only: [:index, :new, :create, :show]
   root 'events#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
