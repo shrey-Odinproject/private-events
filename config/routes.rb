@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # get "/users/:id", to: "users#show"
   # get "/events", to: "events#index"
 
-  devise_for :users, :controllers => {registrations: 'registrations'}
+  devise_for :users
+  # , :controllers => {registrations: 'registrations'}
   resources :users, only: [:show] # resources user should be below devise user to work
   
   resources :events, only: [:index, :new, :create, :show]
