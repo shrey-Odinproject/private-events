@@ -1,0 +1,6 @@
+<h1><%= @event.title %></h1>
+
+<p><%= @event.location %></p>
+<p><%= @event.date %></p>
+
+<%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br>
