@@ -4,9 +4,13 @@
 <p>Location: <%= @event.location %></p>
 <p>Date: <%= @event.date %></p>
 
-<%# unless current_user.created_events.include? @event | This logic also works too %>
-<% if current_user != @event.creator%><%# if the cretor of the event u are viewing is not current_user (you) then u can be attendee%>
-  BUTTON TO ATTEND Event
+
+<% if current_user != @event.creator%>
+    <% unless @event.attendees.include?(current_user) %>
+        <%= render partial: "become_attendee_form", locals: {event: @event} %>
+    <%else%>
+        <p>you (<%=current_user.email%>) are already attending this event </p>
+    <% end %>
 <% end %>
 
 <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br><br>

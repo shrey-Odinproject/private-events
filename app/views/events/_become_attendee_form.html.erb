@@ -1,0 +1,10 @@
+<%# usually we do model:@mname cause in controller @mname=Model.new, here we hav to do manually 
+cause controller is of event and not invitations,  we do this to get correct form namespace i.e. name=invitation[attribute_name] %>
+<%= form_with model: Invitation.new do |form| %> 
+
+    <%# using hidden field we pass information we want to controller we want (form's url descides controller#action) and field the value %>
+    <%= form.hidden_field :attended_event_id, value: event.id %> 
+    <%# # above line is a major step %>
+    <%= form.submit "Attend" %> <br><br>
+
+<% end %>
