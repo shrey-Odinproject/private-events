@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   resources :invitations, only:[:new, :create]
   
-  resources :events, only: [:index, :new, :create, :show]
+  resources :events
   root 'events#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

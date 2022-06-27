@@ -6,4 +6,6 @@
     <%else%>
         <p>you (<%=current_user.email%>) are already attending this event </p>
     <% end %>
+<% else %>
+     <%= link_to "Update event details", edit_event_path(@event) %> <br><br>
 <% end %>
