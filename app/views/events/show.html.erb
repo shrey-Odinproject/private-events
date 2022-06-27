@@ -8,4 +8,8 @@
     <% end %>
 <% else %>
      <%= link_to "Update event details", edit_event_path(@event) %> <br><br>
+     <%= link_to "Destroy event", event_path(@event), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %><br><br>
 <% end %>
