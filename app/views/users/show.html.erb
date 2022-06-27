@@ -12,7 +12,15 @@
 
 <ul>
     <% @user.attended_events.each do |event| %>
-          <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+          
+        <%  if event.date>Date.today %>
+            <h3>Future events to attended</h3>
+            <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+        <% else %>
+            <h3>Past attended events</h3>
+            <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+        <% end %>
+
     <% end %>
 </ul>
 
