@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!  dont need this as u wont be able to acces page with all of user's created events if u aint loggrd in 
-  # ,except:[:index]
+  before_action :authenticate_user!  
   def show
-    # @user = User.find(params[:id])
-    @user = current_user
+    @user = current_user # if we dont authenticate then there is no current_user and error happen
     @created_events = @user.created_events
   end
 end

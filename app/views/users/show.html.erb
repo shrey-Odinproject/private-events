@@ -27,15 +27,15 @@
 <% end %>
 <%# below is using queries as demanded in instructions %>
 <h3>Future events to attended</h3>
+
 <% @user.attended_events.where('date > ?', Date.today).each do |event| %>
     <%= event.title %> => <%= link_to 'event details',event_path(event) %> <br>
 <% end %>
 
 <h3>Past attended events</h3>
+
 <% @user.attended_events.where('date < ?', Date.today).each do |event| %>
     <%= event.title %> => <%= link_to 'event details',event_path(event) %> <br> 
 <% end %>
 <br>
-<%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br><br>
-<%= link_to 'create-events',new_event_path %><br><br>
 

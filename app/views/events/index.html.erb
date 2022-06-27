@@ -3,7 +3,7 @@
 <%  if user_signed_in? %>
     <h3>Current User: <%= current_user.email%> </h3>
 <% else %>
-    <h3>Logged out</h3>
+    <h3>Logged out (login to view details)</h3>
 <% end %>
 
 <h2> Past Events </h2>
@@ -25,10 +25,4 @@
 </ul>
                                    
 
-<%= link_to 'create-events',new_event_path %> <br><br>
-
-<%  if user_signed_in? %>
-  <%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br><br>
-  <%= link_to 'user page',user_path(current_user) %><br><br>
-<% end %>
 

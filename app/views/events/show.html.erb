@@ -7,7 +7,3 @@
         <p>you (<%=current_user.email%>) are already attending this event </p>
     <% end %>
 <% end %>
-
-<%=link_to 'logout', destroy_user_session_path,data: { turbo_method: :delete } %><br><br>
-<%= link_to 'create-events',new_event_path %> <br><br>
-<%= link_to 'user page',user_path(current_user) %> <br><br>
