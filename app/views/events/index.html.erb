@@ -15,9 +15,9 @@
   <% end %>
 </ul>
 
-<h2> Future Events </h2>
+<h2> Upcoming Events </h2>
 <ul>
-  <% @future_events.each do |event| %>
+  <% @upcoming_events.each do |event| %>
     <li>
       <%= event.title %> => <%= link_to 'event details',event_path(event) %>
     </li>
