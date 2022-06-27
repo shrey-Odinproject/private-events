@@ -1,10 +1,13 @@
 <h1>Event Details</h1>
-<h2>Title: <%= event.title %></h2>
 
+<h3>Creator: <%= event.creator.email %> </h3>
+
+<h2>Title: <%= event.title %></h2>
 <p>Location: <%= event.location %></p>
 <p>Date: <%= event.date %></p>
 
 <h3>Attendees</h3>
+
 <ul>
   <% @event.attendees.each do |attendee| %>
     <li>
