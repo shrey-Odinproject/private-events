@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # , :controllers => {registrations: 'registrations'}
   resources :users, only: [:show] # resources user should be below devise user to work
   
-  resources :invitations, only:[:new, :create]
+  resources :invitations, only:[:new, :create, :destroy]
   
   resources :events
   root 'events#index'

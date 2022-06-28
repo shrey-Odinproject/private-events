@@ -10,13 +10,22 @@ class InvitationsController < ApplicationController
 
     if @invitation.save
       flash[:success] = "U are now an attendee!"
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       flash.now[:error] = "Rats! Fix your mistakes, please."
       # no view exists for invitations so :new doesnot exist as well 
       render :new, status: :unprocessable_entity
     end
 
+  end
+
+  def destroy
+    #params[id] gives the argument in view's @invitation variable isnt used in destroying
+    # because button directs here params[:id] becomes that of the invitation so we simply use that to get the invitation we wanna delete
+    @invitation = Invitation.find(params[:id]) 
+    @invitation.destroy
+
+    redirect_to user_path(current_user), status: :see_other
   end
 
   private

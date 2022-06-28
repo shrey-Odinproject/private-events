@@ -1,15 +1,28 @@
 <%= render partial: "event_details", locals: {event: @event} %>
 
 <% if current_user != @event.creator%>
+    
     <% unless @event.attendees.include?(current_user) %>
         <%= render partial: "become_attendee_form", locals: {event: @event} %>
     <%else%>
         <p>you (<%=current_user.email%>) are already attending this event </p>
+    
     <% end %>
+
 <% else %>
+     
      <%= link_to "Update event details", edit_event_path(@event) %> <br><br>
      <%= link_to "Destroy event", event_path(@event), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %><br><br>
+
 <% end %>
+
+<%# want to delete invitation  %>
+<% if @event.attendees.include?(current_user) %>
+   <%= button_to 'Cancel attendence', invitation_path(Invitation.find_by(attendee_id: current_user.id, attended_event_id: @event.id)), data: {turbo_method: :delete}, :method => :delete %> <br>
+<%end%>
+
+<%# above could not use @invitation as this is view for event and not invitation, we manually find the id of invitation to delete using query %>
+<%# MAJOR THING!!! in above delete request params:id is that of the Invitation and not the event %>
