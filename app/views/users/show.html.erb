@@ -9,6 +9,26 @@
 </ul>
 
 <h2>Attended Events</h2>
+
+<%# below is using queries as demanded in instructions %>
+<h4>Future events to attended</h4>
+
+<ul>
+    <% @user.attended_events.where('date > ?', Date.today).each do |event| %>
+        <li><%= event.title %> => <%= link_to 'event details',event_path(event) %></li>
+    <% end %> 
+</ul>
+
+<h4>Past attended events</h4>
+
+<ul>
+    <% @user.attended_events.where('date < ?', Date.today).each do |event| %>
+        <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+    <% end %>
+</ul>
+
+
+
 <%# this was without using queries, simple if-else commented out using if false block  %>
 <% if false %>
     <ul>
@@ -25,17 +45,3 @@
         <% end %>
     </ul>
 <% end %>
-<%# below is using queries as demanded in instructions %>
-<h3>Future events to attended</h3>
-
-<% @user.attended_events.where('date > ?', Date.today).each do |event| %>
-    <%= event.title %> => <%= link_to 'event details',event_path(event) %> <br>
-<% end %>
-
-<h3>Past attended events</h3>
-
-<% @user.attended_events.where('date < ?', Date.today).each do |event| %>
-    <%= event.title %> => <%= link_to 'event details',event_path(event) %> <br> 
-<% end %>
-<br>
-

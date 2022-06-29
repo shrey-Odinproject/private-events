@@ -12,4 +12,6 @@ Understand how to link user and event by making invitation inside from a control
 
 Using hidden input to pass desired values on the press of a button in form to desired controller#action  
 
-Create a delete button, map it to correct path and create destroy method(for invitation)
+Create a delete button, map it to correct path and create destroy method(for invitation)  
+
+Which controller does what was main problem in this project

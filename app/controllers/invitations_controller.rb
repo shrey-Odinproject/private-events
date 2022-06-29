@@ -1,9 +1,11 @@
 class InvitationsController < ApplicationController
+  # removed the new method because @invitation was never used in any view, we needed instance of invitation to create a form in 
+  #other controller's view (event) so we directly created an instance there in view itself rather than use @invitation created in 
+  # controller#new 
 
-  def new
-    # 
-    @invitation = Invitation.new
-  end
+  # def new
+  #   @invitation = Invitation.new
+  # end
 
   def create
     @invitation = current_user.invitations.build(invitations_params) # major step
