@@ -1,14 +1,32 @@
 <%= render partial: "event_details", locals: {event: @event} %>
 
-<% if current_user != @event.creator%>
+<% if current_user != @event.creator %>
     
-    <% unless @event.attendees.include?(current_user) %>
-        <%= button_to 'Attend', invitations_path, params: {event_id: @event.id} %>
-    <%else%>
-        <%= button_to 'Cancel attendence', invitation_path, params: {event_id: @event.id},:method => :delete%> <br>
+    <% if @event.attendees.include?(current_user) %>
+        <%= button_to 'Cancel attendence', invitation_path, params: {event_id: @event.id},:method => :delete%>
+    <%elsif @event.creator.invited.include?(current_user.id.to_s) %> 
+        You are invited
+        <%= button_to 'Attend', invitations_path, params: {event_id: @event.id} %> 
+    <% else%>
+        you are not invited <br>
     <% end %>
 
 <% else %>
+    
+    <h3>Users to invite</h3>
+    <ul>
+    <% User.where.not(id: @event.creator.id).each do |user| %>
+        <li>
+        <%= user.email %> 
+        
+        <% unless current_user.invited.include?(user.id.to_s) %> 
+            <%= button_to 'invite', invite_user_path, params: {user_id: user.id,creator_id: @event.creator.id} %>
+        <%else%>
+            already invited
+        <%end%>
+        </li>
+    <% end %>
+    </ul>
      
      <%= link_to "Update event details", edit_event_path(@event) %> <br><br>
      <%= link_to "Destroy event", event_path(@event), data: {
