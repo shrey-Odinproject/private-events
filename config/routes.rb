@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # get 'users/show' 
+  # get 'users/show'
   # get 'events/index'
   # get "/users/:id", to: "users#show"
   # get "/events", to: "events#index"
@@ -12,10 +12,9 @@ Rails.application.routes.draw do
       post 'invite'
     end
   end
-  
-  
-  resources :invitations, only:[:new, :create, :destroy]
-  
+
+  resources :invitations, only: [:new, :create, :destroy]
+
   resources :events
   root 'events#index'
 

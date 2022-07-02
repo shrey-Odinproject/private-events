@@ -4,7 +4,7 @@
 
 <ul>
     <% @created_events.each do |event| %>
-      <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+      <li> <%= link_to event.title,event_path(event) %> </li>
     <% end %>
 </ul>
 
@@ -15,7 +15,7 @@
 
 <ul>
     <% @user.attended_events.where('date > ?', Date.today).each do |event| %>
-        <li><%= event.title %> => <%= link_to 'event details',event_path(event) %></li>
+        <li> <%= link_to event.title,event_path(event) %> %></li>
     <% end %> 
 </ul>
 
@@ -23,7 +23,7 @@
 
 <ul>
     <% @user.attended_events.where('date < ?', Date.today).each do |event| %>
-        <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+        <li> <%= link_to event.title,event_path(event) %> </li>
     <% end %>
 </ul>
 
@@ -36,10 +36,10 @@
             
             <%  if event.date>Date.today %>
                 <h3>Future events to attended</h3>
-                <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+                <li> <%= link_to event.title,event_path(event) %> </li>
             <% else %>
                 <h3>Past attended events</h3>
-                <li><%= event.title %> => <%= link_to 'event details',event_path(event) %> </li>
+                <li> <%= link_to event.title,event_path(event) %> </li>
             <% end %>
 
         <% end %>

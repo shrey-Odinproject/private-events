@@ -1,5 +1,4 @@
 class InvitationsController < ApplicationController
-
   def create
     current_event = Event.find(params[:event_id]) # we maually pass event_id in params (check event#show view)
     @invitation = current_user.invitations.build(attended_event_id: current_event.id)
@@ -11,7 +10,6 @@ class InvitationsController < ApplicationController
       flash.now[:notice] = "Couldn't attend due to an error"
       redirect_back fallback_location: '/events'
     end
-
   end
 
   def destroy
@@ -21,5 +19,4 @@ class InvitationsController < ApplicationController
     @invitation.destroy
     redirect_back fallback_location: "/events/#{current_event.id}"
   end
-
 end

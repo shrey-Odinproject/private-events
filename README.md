@@ -14,4 +14,13 @@ Using hidden input to pass desired values on the press of a button in form to de
 
 Create a delete button, map it to correct path and create destroy method(for invitation)  
 
-Which controller does what was main problem in this project
+Create custom route for a new method in controller  
+
+Create array attribute by serializing a text column  
+
+Made use of params in button to send desired info to desired controller  
+
+Figuring out how to link a different view and controller and how to pass info between them was the main challenge  
+
+To add:  
+Logic regarding not being able to attend/cancel attendence on past events etc.

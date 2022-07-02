@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user! ,except:[:index]
+  before_action :authenticate_user!, except: [:index]
   def index
     @past_events = Event.past
     @upcoming_events = Event.upcoming
@@ -45,6 +45,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:title, :location, :date)
   end

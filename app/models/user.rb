@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :invitations, foreign_key: "attendee_id"
   has_many :attended_events, through: :invitations
 
-  serialize :invited,Array
+  serialize :invited, Array
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
